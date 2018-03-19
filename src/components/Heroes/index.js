@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose, withStateHandlers } from 'recompose';
 import { createStructuredSelector } from 'reselect';
-import { isEmpty, map, values } from 'ramda';
+import { map, values } from 'ramda';
 import { Card } from '@blueprintjs/core';
 import { Container } from '../widgets/Container';
 import { ModalHero } from './ModalHero';
@@ -19,7 +18,7 @@ const Heroes = ({ hero, heroes, fetchHero, resetHero }) => {
       <Container>
         {map(({ id, thumbnail }) => (
           <Card key={id} interactive={true} onClick={() => fetchHero(id)}>
-            <img alt={'Hero\'s image'} src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
+            <img alt={'Hero'} src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
           </Card>
         ), values(heroes))}
       </Container>

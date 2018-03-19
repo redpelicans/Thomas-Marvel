@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { isEmpty } from 'ramda';
 
 const hero = state => state.hero
 export const getHero = createSelector(

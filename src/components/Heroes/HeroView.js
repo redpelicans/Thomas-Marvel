@@ -7,19 +7,28 @@ const HeroView = ({ comics, description, id, name, series, thumbnail }) => {
 
   return (
     <Fragment>
-      <img alt={'Hero\'s image'} src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
+      <img alt={'Hero'} src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
       <p>{name}</p>
       <p>{description}</p>
       <b>Comics</b>
       {map(item => (
-        <p key={item.name}>{item.name}</p>
+        <p key={`${item.name}${id}`}>{item.name}</p>
       ), comics.items)}
       <b>Series</b>
         {map(item => (
-          <p key={item.name}>{item.name}</p>
+          <p key={`${item.name}${id}`}>{item.name}</p>
         ), series.items)}
     </Fragment>
   )
+}
+
+HeroView.propTypes = {
+  comics: PropTypes.object,
+  description: PropTypes.string,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  series: PropTypes.object,
+  thumbnail:PropTypes.object,
 }
 
 export default HeroView;
