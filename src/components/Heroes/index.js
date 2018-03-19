@@ -26,7 +26,7 @@ const Heroes = ({ hero, heroes, fetchHero, resetHero }) => {
       <ModalHero hero={hero} close={resetHero} />
       <Container>
         {map(({ id, name, thumbnail, urls }) => (
-          <StyledCard key={id} interactive={true} onClick={() => fetchHero(id)}>
+          <StyledCard key={id} className='.pt-elevation-2' interactive={true} onClick={() => fetchHero(id)}>
             <img alt={'Hero'} src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
             <b>{name}</b>
             <ButtonGroup className='pt-minimal'>
