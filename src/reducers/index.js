@@ -1,15 +1,15 @@
-import { LOAD_HEROES, LOAD_HERO, RESET_HERO } from '../actions';
+import { HEROES_FETCHED, HERO_FETCHED, RESET_HERO } from '../actions';
 
 const initialState = {
-  heroes: {},
+  heroes: [],
   hero: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case LOAD_HEROES:
+    case HEROES_FETCHED:
       return { ...state, heroes: action.payload.heroes };
-    case LOAD_HERO:
+    case HERO_FETCHED:
       return { ...state, hero: action.payload };
     case RESET_HERO:
       return { ...state, hero: {} };

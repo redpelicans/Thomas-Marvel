@@ -6,25 +6,32 @@ import { createStructuredSelector } from 'reselect';
 import { isEmpty, map, values } from 'ramda';
 import { Card } from '@blueprintjs/core';
 import { Container } from '../widgets/Container';
-import { ModalHero } from '../widgets/ModalHero';
+import { ModalHero } from './ModalHero';
 import { fetchHero, resetHero } from '../../actions';
 import { getHero, getHeroes } from '../../selectors';
 
-const Heroes = ({ hero, heroes, fetchHero, setHeroId, resetHero }) => {
+const Heroes = ({ hero, heroes, fetchHero, resetHero }) => {
   const portraitSize = 'portrait_xlarge';
 
   return (
     <Fragment>
-      <ModalHero {...hero} close={resetHero} />
+      <ModalHero hero={hero} close={resetHero} />
       <Container>
         {map(({ id, thumbnail }) => (
           <Card key={id} interactive={true} onClick={() => fetchHero(id)}>
-            <img src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
+            <img alt={'Hero\'s image'} src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
           </Card>
         ), values(heroes))}
       </Container>
     </Fragment>
   )
+}
+
+Heroes.propTypes = {
+  hero: PropTypes.object,
+  heroes: PropTypes.array,
+  fetchHero: PropTypes.func,
+  resetHero: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -37,15 +44,4 @@ const mapDispatchToProps = {
   resetHero,
 }
 
-const enhance = compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withStateHandlers({
-    heroId: null,
-  },
-  {
-    setHeroId: () => id => ({ heroId: id }),
-    resetHeroId: () => () => ({ heroId: '' }),
-  })
-)
-
-export default enhance(Heroes);
+export default connect(mapStateToProps, mapDispatchToProps)(Heroes);
