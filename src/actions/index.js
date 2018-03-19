@@ -2,10 +2,10 @@ import axios from 'axios';
 import crypto from 'crypto';
 import { format } from 'date-fns';
 
-export const HERO_FETCHED = 'LOAD_HERO';
+export const HERO_FETCHED = 'HERO_FETCHED';
 export const HeroFetched = hero => ({ type: HERO_FETCHED, payload: hero });
 
-export const HEROES_FETCHED = 'LOAD_HEROES';
+export const HEROES_FETCHED = 'HERO_FETCHEDES';
 export const HeroesFetched = heroes => ({ type: HEROES_FETCHED, payload: { heroes: heroes } });
 
 export const RESET_HERO = 'RESET_HERO';
