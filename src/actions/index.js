@@ -6,7 +6,7 @@ export const HERO_FETCHED = 'HERO_FETCHED';
 export const HeroFetched = hero => ({ type: HERO_FETCHED, payload: hero });
 
 export const HEROES_FETCHED = 'HERO_FETCHEDES';
-export const HeroesFetched = heroes => ({ type: HEROES_FETCHED, payload: { heroes: heroes } });
+export const HeroesFetched = heroes => ({ type: HEROES_FETCHED, payload: heroes });
 
 export const RESET_HERO = 'RESET_HERO';
 export const resetHero = () => ({ type: RESET_HERO });
@@ -23,9 +23,10 @@ export const fetchHero = id => dispatch => {
     .digest('hex')}`;
 
   axios.get(`${baseURL}${queryParams}`)
-  .then(({ data }) => dispatch(HeroFetched(data.data.results)))
-  .catch(error => console.log(error))
-}
+    .then(({ data }) => dispatch(HeroFetched(data.data.results)))
+    // eslint-disable-next-line no-console
+    .catch(error => console.log(error));
+};
 
 export const fetchHeroes = () => dispatch => {
   const ts = format(new Date(), 'ssss');
@@ -36,6 +37,7 @@ export const fetchHeroes = () => dispatch => {
     .digest('hex')}`;
 
   axios.get(`${baseURL}${queryParams}`)
-  .then(({ data }) => dispatch(HeroesFetched(data.data.results)))
-  .catch(error => console.log(error))
+    .then(({ data }) => dispatch(HeroesFetched(data.data.results)))
+    // eslint-disable-next-line no-console
+    .catch(error => console.log(error));
 };

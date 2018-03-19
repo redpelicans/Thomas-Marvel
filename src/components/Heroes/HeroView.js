@@ -7,12 +7,12 @@ import { map } from 'ramda';
 
 const Container = styled.div`
   display: flex;
-`
+`;
 
 const Description = styled.div`
   margin-top: 5px;
   margin-left: 10px;
-`
+`;
 
 const HeroView = ({ comics, description, id, name, series, thumbnail, isOpenComis, toogleComics, isOpenSeries, toogleSeries }) => {
   const portraitSize = 'portrait_xlarge';
@@ -20,7 +20,7 @@ const HeroView = ({ comics, description, id, name, series, thumbnail, isOpenComi
   return (
     <Container>
       <div>
-        <img alt={'Hero'} src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
+        <img alt='Hero' src={`${thumbnail.path}/${portraitSize}.${thumbnail.extension}`} />
       </div>
       <Description>
         <h3>{name}</h3>
@@ -39,17 +39,21 @@ const HeroView = ({ comics, description, id, name, series, thumbnail, isOpenComi
         </Collapse>
       </Description>
     </Container>
-  )
-}
+  );
+};
 
 HeroView.propTypes = {
   comics: PropTypes.object,
   description: PropTypes.string,
   id: PropTypes.number,
+  isOpenComis: PropTypes.bool,
+  isOpenSeries: PropTypes.bool,
   name: PropTypes.string,
   series: PropTypes.object,
+  toogleComics: PropTypes.func,
+  toogleSeries: PropTypes.func,
   thumbnail:PropTypes.object,
-}
+};
 
 export default withStateHandlers(
   {
@@ -60,4 +64,4 @@ export default withStateHandlers(
     toogleComics: () => input => ({ isOpenComis: !input }),
     toogleSeries: () => input => ({ isOpenSeries: !input })
   }
-)(HeroView)
+)(HeroView);

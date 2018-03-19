@@ -8,7 +8,7 @@ const initialState = {
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case HEROES_FETCHED:
-      return { ...state, heroes: action.payload.heroes };
+        return { ...state, heroes: action.payload };
     case HERO_FETCHED:
       return { ...state, hero: action.payload };
     case RESET_HERO:

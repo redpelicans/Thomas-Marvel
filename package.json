@@ -7,7 +7,10 @@
     "axios": "^0.18.0",
     "crypto": "^1.0.1",
     "date-fns": "^1.29.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "prop-types": "^15.6.1",
+    "pure-render-decorator": "^1.2.1",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
@@ -27,5 +30,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-plugin-react": "^7.7.0"
   }
 }
